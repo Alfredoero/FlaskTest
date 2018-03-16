@@ -26,7 +26,11 @@ def scrap():
 	members_list = soup.findAll('div', {'class': 'member'})
 
 	for memb in members_list:
-		u = Member(full_name=memb.h2.text, role = "", company = "", division = "", location = "", phone_number = "", email = "", link_vcf = "")		
+		full_name = memb.h2.text
+		role = memb.findAll('div', {'class': 'position'})
+
+
+		u = Member(full_name=full_name, role=role[0].text, company="", division="", location="", phone_number="", email="", link_vcf="")
 		try:
 			db.session.add(u)
 			db.session.commit()
