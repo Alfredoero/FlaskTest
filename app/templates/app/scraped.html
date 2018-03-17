@@ -12,13 +12,25 @@
           <tr>
             <th>Full Name</th>
             <th>Role</th>
+            <th>Company</th>            
+            <th>Division</th>
+            <th>Location</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th>Link VCF</th>
           </tr>
         </thead>
         <tbody>
           {% for member in members %}
           <tr>
             <td>{{ member.full_name }}</td>
-            <td>{{ member.role }}</td>
+            <td>{{ member.role }}</td>            
+            <td>{{ member.company }}</td>
+            <td>{{ member.division }}</td>            
+            <td>{{ member.location }}</td>            
+            <td>{{ member.phone_number }}</td>
+            <td>{{ member.email }}</td>                        
+            <td><a href="{{ member.link_vcf }}">VCard</a></td>
           </tr>
           {% endfor %}
         </tbody>

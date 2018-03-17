@@ -1,3 +1,33 @@
 __pycache__/
 *.pyc
 .idea/
+
+app\.db
+
+\.DS_Store
+
+vcards/Allison Adornato\.vcf
+
+vcards/Christopher Bigos\.vcf
+
+vcards/Chuck Pomerantz\.vcf
+
+vcards/Colm Flynn\.vcf
+
+vcards/Eric Rosenthal\.vcf
+
+vcards/Jeffrey Fier\.vcf
+
+vcards/John Bunting\.vcf
+
+vcards/Josh Brandt\.vcf
+
+vcards/Josh Dinstein\.vcf
+
+vcards/Long Nguyen\.vcf
+
+vcards/Robert Chimenti\.vcf
+
+vcards/Susan George\.vcf
+
+vcards/Tom McGarrity\.vcf

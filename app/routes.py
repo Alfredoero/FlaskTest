@@ -1,13 +1,8 @@
 from flask import render_template
 from app import app, db
-from bs4 import BeautifulSoup
 from app.models import Member
 from sqlalchemy.exc import IntegrityError
-import requests
-import urllib.request
-import ssl
-
-ssl._create_default_https_context = ssl._create_unverified_context
+from app.scrapping import Scrapping
 
 
 @app.route('/')
@@ -19,25 +14,18 @@ def index():
 @app.route('/scrap')
 def scrap():
 	url = "https://www.garrisoninv.com/senior-investment-professionals.php"
-	request = urllib.request.urlopen(url)
+	
+	scrap = Scrapping()
+	scrap.start(url)
 
-	soup = BeautifulSoup(request, "html.parser")
-
-	members_list = soup.findAll('div', {'class': 'member'})
-
-	for memb in members_list:
-		full_name = memb.h2.text
-		role = memb.findAll('div', {'class': 'position'})
-
-
-		u = Member(full_name=full_name, role=role[0].text, company="", division="", location="", phone_number="", email="", link_vcf="")
+	for memb in scrap.members_info:
+		 
+		u = Member(full_name=memb["full_name"], role=memb["role"], company=memb["company"], division=memb["division"], location=memb["location"], phone_number=memb["phone_number"], email=memb["email"], link_vcf=memb["link_vcf"])
 		try:
 			db.session.add(u)
 			db.session.commit()
 		except IntegrityError:
 			db.session.rollback()
-
-
 
 	db_members = Member.query.all()
 
