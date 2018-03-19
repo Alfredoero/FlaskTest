@@ -10,6 +10,6 @@ Instructions:
     * export FLASK_APP=flaskTest.py
     * flask db upgrade
     * flask run
-* Check this link in the browser: http://localhost:5000 or http://127.0.0.1:5000 
+* Check this link in the browser: http://localhost:5000 or http://127.0.0.1:5000
 
 
